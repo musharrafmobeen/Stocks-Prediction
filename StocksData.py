@@ -1,6 +1,6 @@
 import yfinance as yf
 from flask import Flask 
-import StocksPrediction as SP
+import StocksPredictions as SP
 import pandas as pd
 from flask import render_template
 import  webbrowser

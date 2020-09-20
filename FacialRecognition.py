@@ -8,25 +8,8 @@ import os
 import shutil
 from VideoCapture import Device
 from PIL import Image
+ 
 
-
-# def getPic():
-#     camera = cv2.VideoCapture(0)
-#     if camera is None or not (camera.isOpened()):
-#         cam = Device()
-#         url = 'images/known/' + rs.get_random_string(8) + '.jpg'
-#         cam.saveSnapshot(url)
-#         return url
-#
-#     else:
-#         print('No Capture Device Available')
-def getPic():
-    name = rs.get_random_string(8) + '.jpg'
-
-    response = requests.get("http://192.168.10.7:8080/photo.jpg")
-    img1 = Image.open(BytesIO(response.content))
-    img1.save('images/unknown/' + name)
-    return name
 
 def compare(img):
     folder = './images/known/'
@@ -35,16 +18,15 @@ def compare(img):
         img_encoded = fr.face_encodings(image)[0]
         result = fr.compare_faces([img],img_encoded,tolerance=0.5)
         if result[0]:
-            print('person found')
-            cv2.imshow('img',image)
-            cv2.waitKey()
-            return True  
+            return filename
+
+              
             
 
 
-def SignUp_With_FacialId():
-    name = getPic()
-    # url = './images/unknown/images.jpg'
+def SignUp_With_FacialId(PicName):
+    text = '' 
+    name = PicName
     image = fr.load_image_file('images/unknown/' + name)
 
     face_locations = fr.face_locations(image)
@@ -52,26 +34,32 @@ def SignUp_With_FacialId():
 
     if(len(face_locations) == 1):
         img = fr.face_encodings(image)[0]
-        if compare(img):
-            print('Account Already Exists')
+        image2 = compare(img)
+        if image2 != None:
+            text = 'Account Already Exists'
             os.remove('images/unknown/' + name)
+            return text
           
         else:
             cv2.imwrite('images/known/' + name, image)
-            print('Person Saved')  
+            text = 'Person Saved' 
             os.remove('images/unknown/' + name)
+            return text
 
 
     elif(len(face_locations) > 1):
-        print('More Than One person in Image')
+        text = 'More Than One person in Image'
         os.remove('images/unknown/' + name)
+        return text
 
     else:
-        print('NO person in image')
+        text = 'NO person in image'
         os.remove('images/unknown/' + name)
+        return text
 
-def SignIn_With_FacialId():
-    name = getPic()
+def SignIn_With_FacialId(PicName):
+    text = ''
+    name = PicName
 
     image = fr.load_image_file('images/unknown/' + name)
 
@@ -80,17 +68,24 @@ def SignIn_With_FacialId():
 
     if(len(face_locations) == 1):
         img = fr.face_encodings(image)[0]
-        if not compare(img):
-            print('Sign Up First')
-        else:
-            print('Logged In')
+        image2 = compare(img) 
+        if image2 == None:
+            text = 'Sign Up First'
             os.remove('images/unknown/' + name)
+            return text
+
+        else:
+            text = image2
+            os.remove('images/unknown/' + name)
+            return text
 
     elif(len(face_locations) > 1):
-        print('More Than One person in Image')
+        text ='More Than One person in Image'
+        return text
 
     else:
-        print('NO person in image')
+        text = 'NO person in image'
+        return text
 
 
 

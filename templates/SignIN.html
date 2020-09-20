@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign In</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/styles1.css')}}">
+    <link rel="icon" href="{{url_for('static', filename='images/logo.png')}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="{{url_for('static', filename='layout/styles/layout.css')}}" rel="stylesheet" type="text/css" media="all">
+</head>
+<body id="top">
+        <!-- ################################################################################################ -->
+        <!-- ################################################################################################ -->
+        <!-- ################################################################################################ -->
+        <div class="wrapper row0" style="background-color: black;color: white;">
+          <div id="topbar" class="hoc clear" > 
+            <!-- ################################################################################################ -->
+            <div class="fl_left">
+              <ul class="nospace">
+                <li><a href="/"><i class="fa fa-lg fa-home"></i></a></li>
+                <li><a style="color: white;" href="/SignUp">Register</a></li>
+              </ul>
+            </div>
+          <div class="fl_right">
+            <ul class="nospace">
+              <li><i class="fa fa-phone"></i> +92 (123) 456 7890</li>
+              <li><i class="fa fa-envelope-o"></i> info@domain.com</li>
+            </ul>
+          </div>
+          <!-- ################################################################################################ -->
+        </div>
+      </div>
+
+    <div id="Login_box">
+        <div id="SignInForm">
+          <div id="left_box"></div>
+            <form action="/LogIn" method="POST">
+            <h1>Sign In</h1>
+            <input type="email" name="Email" placeholder="Email"><br>
+            <input type="password" name="Password" placeholder="Password"><br>
+            <label for="Sign In"></label><br>
+            <div style="float: left;">
+                <input type="submit" value="Sign In" id="submitbtn">
+            </div>
+            </form>
+            </div>
+            <div id="right_box">
+            <form action="/LogIn_With_Facial_ID">
+              <b><p>{{result}}</p></b>
+              <B><P>press 's' to take the picture</P></B>
+              <input type="submit" value="SignIn With Facial ID" class="SignIn_With_Facial_ID">
+            </form>
+            </div>
+        </div>
+    </div>  
+</body>
+</html>

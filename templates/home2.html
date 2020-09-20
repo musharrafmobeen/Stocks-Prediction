@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Stocks Lab</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="{{url_for('static', filename='layout/styles/layout.css')}}" rel="stylesheet" type="text/css" media="all">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/about.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/model.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/sidebar.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/popup.css')}}">
+    <link rel="icon" href="{{url_for('static', filename='images/logo.png')}}">
+</head>
+<body id="top" style="background-color: black;">
+  <b><p>{{message}}</p></b>
+    <div class="wrapper row0" style="background-color: black;color: white;">
+        <div id="topbar" class="hoc clear" style="color: white;"> 
+          <!-- ################################################################################################ -->
+          <div class="fl_left">
+            <ul class="nospace">
+              <li><a href="/"><i class="fa fa-lg fa-home"></i></a></li>
+              <li><a style="color: white;" href="#about">About</a></li>
+              <li><a style="color: white;" href="#footer">Contact</a></li>
+              <li><a style="color: white;" href="/SignIn">Login</a></li>
+              <li><a style="color: white;" href="/SignUp">Register</a></li>
+            </ul>
+          </div>
+          <div class="fl_right">
+            <ul class="nospace">
+              <li><i class="fa fa-phone"></i> +92 (123) 456 7890</li>
+              <li><i class="fa fa-envelope-o"></i> info@domain.com</li>
+            </ul>
+          </div>
+          <!-- ################################################################################################ -->
+        </div>
+      </div>
+
+      <div class="wrapper row1">
+          <header id="header" class="hoc clear"> 
+            <!-- ################################################################################################ -->
+            <div id="logo" class="fl_left">
+              <h1><a href="/">Stocks Lab</a></h1>
+            </div>
+            <nav id="mainav" class="fl_right">
+              <ul class="clear">
+                <li class="active"><a href="/">Home</a></li>
+            </nav>
+            <!-- ################################################################################################ -->
+          </header>
+        </div>
+
+        <div class="wrapper bgded overlay" style="background-image:url('{{url_for('static', filename='images/backgrounds/01.webp')}}');">
+          <div id="pageintro" class="hoc clear"> 
+            <!-- ################################################################################################ -->
+            <article>
+              <p>Welcome to Stocks Lab</p>
+              <h3 class="heading">We Predict Your Desired Stocks</h3>
+              <footer>
+                <div id="start">
+                  <ul class="nospace inline pushright">
+                  <li><a class="btn inverse" onclick="start()" style="cursor: pointer;">Start Now</a></li>
+                </ul>
+                </div>
+                <div id="begin" style="display:none;">
+                  <ul class="nospace inline pushright">
+                  <li><a class="btn inverse" href="/SignIn">Log In</a></li>
+                  <li><a class="btn inverse" href="/SignUp">Sign UP</a></li>
+                </ul>
+                </div>
+              </footer>
+            </article>
+            <!-- ################################################################################################ -->
+          </div>
+        </div>
+        <div class="bgded overlay" style="background-image:url('{{url_for('static', filename='images/backgrounds/02.jpg')}}');"> 
+          <!-- ################################################################################################ -->
+          <div class="wrapper row4">
+            <footer id="footer" class="hoc clear"> 
+              <!-- ################################################################################################ -->
+              <div class="one_quarter first">
+                <h6 class="heading">Contact Us</h6>
+                <ul class="nospace btmspace-30 linklist contact">
+                  <li><i class="fa fa-map-marker"></i>
+                    <address>
+                    DCS&SE, IIUI, Islamabad, Pakistan
+                    </address>
+                  </li>
+                  <li><i class="fa fa-phone"></i> +92 (123) 456 7890</li>
+                  <li><i class="fa fa-envelope-o"></i> info@domain.com</li>
+                </ul>
+                <ul class="faico clear">
+                  <li><a class="faicon-facebook" href="https://www.facebook.com/mohsin.murad.944" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                  <li><a class="faicon-twitter" href="https://twitter.com/MohsinB98713019?s=08" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                  <li><a class="faicon-dribble" href="#"><i class="fa fa-dribbble"></i></a></li>
+                  <li><a class="faicon-linkedin" href="https://www.linkedin.com/in/mohsin-murad-01476214b/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                </ul>
+              </div>
+              <div class="one_quarter"></div>
+              <div class="one_quarter"><h6 class="heading"></h6>
+                  <ul class="nospace linklist">
+                  </ul></div>
+              <div class="one_quarter">
+                <h6 class="heading">Facing Issues</h6>
+                <p class="nospace btmspace-15">Write us to address your issues.</p>
+                <form method="post" action="/MessageToDeveloper_LoggedOff">
+                  <fieldset>
+                    <legend>Newsletter:</legend>
+                    <input class="btmspace-15" type="text" name="nameloggedoff" value="" placeholder="Name">
+                    <input class="btmspace-15" type="text" name="mailloggedoff" value="" placeholder="Email">
+                    <textarea class="btmspace-15" name="review" rows="4" cols="50" placeholder="Comments"></textarea>
+                    <button type="submit" value="submit">Submit</button>
+                  </fieldset>
+                </form>
+              </div>
+              
+              <script>
+                  // When the user clicks on <div>, open the popup
+                  function openForm() {
+                      document.getElementById("myForm").style.display = "grid";
+                  }
+
+                  function closeForm() {
+                      document.getElementById("myForm").style.display = "none";
+                      }
+                      function start(){
+                          document.getElementById("start").style.display = "none";
+                          document.getElementById("begin").style.display = "block";
+                      }
+              </script>
+              <!-- ################################################################################################ -->
+            </footer>
+
+              <div id="about">
+              <div class="about-section">
+                  <h1>About Us </h1>
+                  <p>A class project done by two students of BSSE/F17.</p>
+                </div>
+                
+                <h2 style="text-align:center">Our Team</h2>
+
+                <div class="column" style="width: 10%;" >
+                  <div class="card">
+                    <!--<img src="mohsin.jpg" alt="Mohsin" style="width:100%">-->
+                    <div class="container" style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row" style="text-align: center;" >
+                  <div class="column"  >
+                    <div class="card">
+                      <img src="{{url_for('static', filename='images/musharaf2.jpg')}}" alt="Musharaf" style="width:100%">
+                      <div class="container">
+                        <h2>Musharaf Mobeen</h2>
+                        <p class="title">Back-end Developer</p>
+                        <p>Reg# 3483-FBAS/BSSE/F17</p>
+                        <p>musharaf@example.com</p>
+                        <p><button class="button">Contact</button></p>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="column" style="width: 10%;" >
+                      <div class="card">
+                        <!--<img src="mohsin.jpg" alt="Mohsin" style="width:100%">-->
+                        <div class="container" style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;">
+                        </div>
+                      </div>
+                    </div>
+
+                  <div class="column">
+                    <div class="card">
+                      <img src="{{url_for('static', filename='images/mohsin2.jpg')}}" alt="Mohsin" style="width:100%">
+                      <div class="container">
+                        <h2>Mohsin Murad</h2>
+                        <p class="title">Art Director</p>
+                        <p>Reg# 3617-FBAS/BSSE/F17</p>
+                        <p>mohsin@example.com</p>
+                        <p><button class="button">Contact</button></p>
+                      </div>
+                    </div>
+                  </div>
+                  
+
+                  <div class="column" style="width: 10%;" >
+                      <div class="card">
+                        <!--<img src="mohsin.jpg" alt="Mohsin" style="width:100%">-->
+                        <div class="container" style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;">
+                        </div>
+                      </div>
+                    </div>
+
+                </div>
+
+          </div>
+
+          </div>
+</body>
+</html>

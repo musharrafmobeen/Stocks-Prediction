@@ -3,21 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/styles1.css')}}">
+    <title>Agree to Cookie</title>
+    <style>
+        body
+        {
+            background-image: url("{{url_for('static', filename='images/backgrounds/03.png')}}");
+            background-size: auto;
+            text-align: center;
+        }
+        #cookie
+        {
+            display: block;
+            text-align: center;
+            position: relative;
+            margin: 5% auto;
+            height: 400px;
+            width: 600px;
+            background: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+        }
+       
+        #form1
+        {
+            display: inline-block;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+        }
+    </style>
 </head>
 <body>
-    <form action="site.php" method="POST">
-        <input type="text" name="Company_Name">
-        <input type="date" name="Date" placeholder="mm/dd/yyyy">
-        <input type="submit">
-    </form>
-    <form action="site3.php" method="POST">
-        <!-- <input type="hidden" name="Authentication" value=0> -->
-        <input type="submit" value="SignUp" name="Authentication">
-    </form> 
-    <form action="site3.php" method="POST">
-        <!-- <input type="hidden" name="Authentication" value=1> -->
-        <input type="submit" value="SignIn" name="Authentication">
-    </form> 
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div id="cookie" style="background-image: url('{{url_for('static', filename='images/backgrounds/nebula.jpeg')}}');">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <form action="/setCookie" id="form1">
+                <b><p>Agree to cookies </p></b>
+                <input type="submit" value="Agree" class="cookiebtn">
+            </form>
+    </div>      
 </body>
 </html>

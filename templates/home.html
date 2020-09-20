@@ -1,13 +1,310 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form action="run.php" method="POST">
-        <input type="submit">
-    </form>
-</body>
-</html>
+<html>
+    <head>
+        <title>Stocks Lab</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link href="{{url_for('static', filename='layout/styles/layout.css')}}" rel="stylesheet" type="text/css" media="all">
+        <link rel="stylesheet" href="{{url_for('static', filename='styles/about.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/model.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/sidebar.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/popup.css')}}">
+    <link rel="icon" href="{{url_for('static', filename='images/logo.png')}}">
+    </head>
+    <body id="top" style="background-color: black;">
+     <b><p>{{message}}</p></b>   
+    <div id="main">
+        <div class="wrapper row0" style="background-color: black;color: white;">
+            <div id="topbar" class="hoc clear"> 
+            <!-- ################################################################################################ -->
+            <div class="fl_left">
+                <ul class="nospace">
+                <li><a href="/"><i class="fa fa-lg fa-home"></i></a></li>
+                <li><a style="color: white;" href="#about">About</a></li>
+                <li><a style="color: white;" href="#footer">Contact</a></li>
+                <li><a style="color: white;" href="">Logged-in as {{username}}</a></li>
+                <li><a style="color: white;cursor: pointer;" onclick="openForm()" >Log Out</a></li>
+                <li><a style="color: white;" href="/PredictStocks">Stocks Prediction</a></li>
+                <li><img src="{{url_for('static', filename='images/mic.png')}}" alt="" id="start-btn" title="Start" style="width: 10%;" style="height: 10%;"></li>
+                <div  id="myForm" style="display: none;">
+                <form class="form">
+                <h1>You are about to LogOut!</h1>
+                <h4>Do you want to proceed?</h4>
+                <ul>
+                        <li><a class="btn inverse"  href="/LogOut" style="color:white;">Yes</a></li>
+                        <li><a class="btn inverse" onclick="closeForm()" style="cursor: pointer;">Cancel</a></li>
+                    </ul>
+                </form>
+            </div>
+                    
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                <script src="{{url_for('static', filename='Javascript/Voice_Scripts.js')}}"></script>      
+                <script>
+                    // When the user clicks on <div>, open the popup
+                        function openForm() {
+                    document.getElementById("myForm").style.display = "contents";
+                    }
+
+                    function closeForm() {
+                    document.getElementById("myForm").style.display = "none";
+                    }
+                </script>
+                </ul>
+            </div>
+            <div class="fl_right">
+                <ul class="nospace">
+                <li><a style="color:white; cursor: pointer;" onclick="openNav()">☰ Acount</a></li>
+                <li><i class="fa fa-phone"></i> +92 (123) 456 7890</li>
+                <li><i class="fa fa-envelope-o"></i> info@domain.com</li>
+                </ul>
+                <div id="mySidebar" class="sidebar" style="background-image:url('{{url_for('static', filename='images/backgrounds/nebula.jpeg')}}');">
+                    <form action="/updateordelete" method="POST">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                    <label for="mail" style="color:white;font: initial; font-weight: bold;">UserName:</label>
+                    <input type="text" name="username" value="" placeholder="Email" style="color:black;" ><br>
+                    <label for="password" style="color:white; font: initial; font-weight: bold;">Password:</label>
+                    <input type="password" class="upPass" name="password" placeholder="Password" style="text-transform:uppercase;color:black;" ><br>
+                    <input type="submit" name="btn" value="Update">
+                    <input type="submit" name="btn" value="Delete">
+                   
+                    </form>
+                </div>
+            </div>
+                <script>
+                    function openNav() {
+                    document.getElementById("mySidebar").style.width = "250px";
+                    document.getElementById("main").style.marginLeft = "250px";
+                    }
+
+                    function closeNav() {
+                    document.getElementById("mySidebar").style.width = "0";
+                    document.getElementById("main").style.marginLeft= "0";
+                    }
+                </script>
+            <!-- ################################################################################################ -->
+            </div>
+        </div>
+     
+        <div class="wrapper row1">
+            <header id="header" class="hoc clear"> 
+              <!-- ################################################################################################ -->
+              <div id="logo" class="fl_left">
+                <h1><a href="/">Stocks Lab</a></h1>
+              </div>
+              <nav id="mainav" class="fl_right">
+                <ul class="clear">
+                  <li class="active"><a href="/">Home</a></li>
+              </nav>
+              <!-- ################################################################################################ -->
+            </header>
+          </div>
+
+        <div class="wrapper bgded overlay" style="background-image:url('{{url_for('static', filename='images/backgrounds/01.webp')}}');">
+        <div>
+        <div id="myModalup" class="modal" style="text-align:center;">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                <h2>Are you Sure to save changes?</h2>
+                </div>
+                <div class="modal-body">
+                    <p style="color:black;" >To save changes you will be logeed out.</p>
+                </div>
+                <div class="modal-footer">
+                     <ul class="nospace inline pushright">
+                        <li>
+                            <button class="btn inverse"  onclick="closeUp()" >Continue</button>
+                        </li>
+                        <li>
+                            <button class="btn inverse"  onclick="closeDel()" >Cancel</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+                
+        </div>
+        </div>
+         <div>
+
+<script>
+function showUpMod(){
+        document.getElementById("myModalup").style.display = "block";
+}
+function closeUp(){
+    document.getElementById("myModalup").style.display = "none";
+}
+function showDel(){
+        document.getElementById("ModalDel").style.display = "block";
+}
+function closeDel(){
+    document.getElementById("ModalDel").style.display = "none";
+}
+</script>
+            </div>
+                <div id="pageintro" class="hoc clear"> 
+                <!-- ################################################################################################ -->
+                <article>
+                    <p>Welcome {{username}}</p>
+                    <h3 class="heading">We Predict Your Desired Stocks</h3>
+                <footer>
+                  <div id="start">
+                    <ul class="nospace inline pushright">
+                    <li><a class="btn inverse" href="/LogIn" >Start Now</a></li>
+                  </ul>
+                  </div>
+                </footer>
+                </article>
+                <!-- ################################################################################################ -->
+                </div>
+            </div>
+
+
+                  <div>
+        <div id="ModalDel" class="modal" style="text-align:center;">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                <h2>Are you Sure?</h2>
+                </div>
+                <div class="modal-body">
+                    <p style="color:black;" >Do you want to delete your account?</p>
+                </div>
+                <div class="modal-footer">
+                    <ul class="nospace inline pushright">
+                        <li>
+                            <button class="btn inverse"  onclick="closeDel()" >Yes</button>
+                        </li>
+                        <li>
+                            <button class="btn inverse"  onclick="closeDel()" >Cancel</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="bgded overlay" style="background-image:url('{{url_for('static', filename='images/backgrounds/02.jpg')}}');"> 
+            <!-- ################################################################################################ -->
+            <div class="wrapper row4">
+              <footer id="footer" class="hoc clear"> 
+                <!-- ################################################################################################ -->
+                <div class="one_quarter first">
+                  <h6 class="heading">Contact Us</h6>
+                  <ul class="nospace btmspace-30 linklist contact">
+                    <li><i class="fa fa-map-marker"></i>
+                      <address>
+                      DCS&SE, IIUI, Islamabad, Pakistan
+                      </address>
+                    </li>
+                    <li><i class="fa fa-phone"></i> +92 (123) 456 7890</li>
+                    <li><i class="fa fa-envelope-o"></i> info@domain.com</li>
+                  </ul>
+                  <ul class="faico clear">
+                    <li><a class="faicon-facebook" href="https://www.facebook.com/mohsin.murad.944" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                    <li><a class="faicon-twitter" href="https://twitter.com/MohsinB98713019?s=08" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                    <li><a class="faicon-dribble" href="#"><i class="fa fa-dribbble"></i></a></li>
+                    <li><a class="faicon-linkedin" href="https://www.linkedin.com/in/mohsin-murad-01476214b/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                  </ul>
+                </div>
+                <div class="one_quarter"></div>
+                <div class="one_quarter"><h6 class="heading"></h6>
+                    <ul class="nospace linklist">
+                    </ul></div>
+                <div class="one_quarter">
+                  <h6 class="heading">Facing Issues</h6>
+                  <p class="nospace btmspace-15">Write us to address your issues.</p>
+                  <form method="post" action="/MessageToDeveloper_LoggedIn">
+                    <fieldset>
+                      <legend>Newsletter:</legend>
+                      <input class="btmspace-15" type="text" name="nameloggedin" value="" placeholder="Name">
+                      <input class="btmspace-15" type="text" name="mailloggedin" value="" placeholder="Email">
+                      <textarea class="btmspace-15" name="review" rows="4" cols="50" placeholder="Comments"></textarea>
+                      <button type="submit" value="submit">Submit</button>
+                    </fieldset>
+                  </form>
+                </div>
+                
+                <script>
+                    // When the user clicks on <div>, open the popup
+                    function openForm() {
+                        document.getElementById("myForm").style.display = "grid";
+                    }
+  
+                    function closeForm() {
+                        document.getElementById("myForm").style.display = "none";
+                        }
+                        function start(){
+                            document.getElementById("start").style.display = "none";
+                            document.getElementById("begin").style.display = "block";
+                        }
+                </script>
+                <!-- ################################################################################################ -->
+              </footer>
+  
+                <div id="about">
+                <div class="about-section">
+                    <h1>About Us </h1>
+                    <p>A class project done by two students of BSSE/F17.</p>
+                  </div>
+                  
+                  <h2 style="text-align:center">Our Team</h2>
+  
+                  <div class="column" style="width: 10%;" >
+                    <div class="card">
+                      <!--<img src="mohsin.jpg" alt="Mohsin" style="width:100%">-->
+                      <div class="container" style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;">
+                      </div>
+                    </div>
+                  </div>
+  
+                  <div class="row" style="text-align: center;" >
+                    <div class="column"  >
+                      <div class="card">
+                        <img src="{{url_for('static', filename='images/musharaf2.jpg')}}" alt="Musharaf" style="width:100%">
+                        <div class="container">
+                          <h2>Musharaf Mobeen</h2>
+                          <p class="title">Back-end Developer</p>
+                          <p>Reg# 3483-FBAS/BSSE/F17</p>
+                          <p>musharaf@example.com</p>
+                          <p><button class="button">Contact</button></p>
+                        </div>
+                      </div>
+                    </div>
+                  
+                    <div class="column" style="width: 10%;" >
+                        <div class="card">
+                          <!--<img src="mohsin.jpg" alt="Mohsin" style="width:100%">-->
+                          <div class="container" style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;">
+                          </div>
+                        </div>
+                      </div>
+  
+                    <div class="column">
+                      <div class="card">
+                        <img src="{{url_for('static', filename='images/mohsin2.jpg')}}" alt="Mohsin" style="width:100%">
+                        <div class="container">
+                          <h2>Mohsin Murad</h2>
+                          <p class="title">Art Director</p>
+                          <p>Reg# 3617-FBAS/BSSE/F17</p>
+                          <p>mohsin@example.com</p>
+                          <p><button class="button">Contact</button></p>
+                        </div>
+                      </div>
+                    </div>
+                    
+  
+                    <div class="column" style="width: 10%;" >
+                        <div class="card">
+                          <!--<img src="mohsin.jpg" alt="Mohsin" style="width:100%">-->
+                          <div class="container" style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;">
+                          </div>
+                        </div>
+                      </div>
+  
+                  </div>
+  
+            </div>
+  
+            </div>
+</body>  
+</html>      

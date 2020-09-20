@@ -1,11 +1,19 @@
-import sys
-import FacialRecognition as Fr
+from cv2 import cv2
+import RandomString as rs
 
-x = sys.argv[1]
+def getPic():
+    camera = cv2.VideoCapture(0)
+    name = rs.get_random_string(8) + '.jpg'
+    if camera:
+        while True:
+            ret,image = camera.read()
+            cv2.imshow('image',image)
+            if cv2.waitKey(1)& 0xFF == ord('s'):
+                cv2.imwrite('images/unknown/'+name,image)
+                break
+        cv2.destroyAllWindows()
+        camera.release()
+        return name 
 
-if x=="'SignUp'":
-    Fr.SignUp_With_FacialId()
-
-elif x=="'SignIn'":
-    Fr.SignIn_With_FacialId()
-
+    else:
+        return "No Capture Device Available"         

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign In</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/styles1.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="{{ url_for('static',filename='layout/styles/layout.css') }}" rel="stylesheet" type="text/css" media="all">
+</head>
+<body id="top">
+        <!-- ################################################################################################ -->
+        <!-- ################################################################################################ -->
+        <!-- ################################################################################################ -->
+        <div class="wrapper row0" style="background-color: black;color: white;">
+          <div id="topbar" class="hoc clear" > 
+            <!-- ################################################################################################ -->
+            <div class="fl_left">
+              <ul class="nospace">
+                <li><a href="/"><i class="fa fa-lg fa-home"></i></a></li>
+                <li><a style="color: white;" href="index.php#about">About</a></li>
+                <li><a style="color: white;" href="index.php#footer">Contact</a></li>
+              </ul>
+            </div>
+          <div class="fl_right">
+            <ul class="nospace">
+              <li><i class="fa fa-phone"></i> +92 (123) 456 7890</li>
+              <li><i class="fa fa-envelope-o"></i> info@domain.com</li>
+            </ul>
+          </div>
+          <!-- ################################################################################################ -->
+        </div>
+      </div>
+
+    <div id="Login_box">
+        <div id="SignInForm">
+            <form action="/Predict" method="POST">
+                <b> <p> Company Name : </p> </b>   
+                <input type="text" name="Company_Name" placeholder="Set Company Name">
+                <br>
+                <b> <p> Date On Which stocks Are To Be Predicted : </p> </b>
+                <input type="date" name="Date" placeholder="mm/dd/yyyy">
+                <br>
+                <label for="Predict Stock Price"></label><br>
+                <div style="float: left;">
+                    <input type="submit" id="submitbtn">
+                </div>
+            </form>
+        </div>
+    </div>  
+</body>
+</html>
